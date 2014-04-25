@@ -40,4 +40,16 @@ public class Save {
         }
     }
 
+    public void workerHistory(String accountName, String description) {
+        try {
+            ResultSet resultSet = connection.getData("SELECT * FROM login WHERE username='" + accountName + "'");
+            if (resultSet.next()) {
+                int id = Integer.parseInt(resultSet.getString("general_user_profile_idgeneral_user_profile"));
+                connection.putData("INSERT INTO worker_history VALUES('" + id + "','" + description + "')");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

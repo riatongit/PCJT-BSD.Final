@@ -5,6 +5,8 @@
  */
 package control.controlPanel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JRadioButton;
 import model.controlPanel.Delete;
 import model.controlPanel.Save;
@@ -21,6 +23,8 @@ public class Actions {
     Save save;
     Delete delete;
     Validation validation;
+    Date date;
+    SimpleDateFormat simpleDateFormat;
 
     String loginId;
 
@@ -78,6 +82,7 @@ public class Actions {
             response.Response.error("Select the account again");
         } else {
             save.deleteUser(accountName);
+            save.workerHistory(accountName, "This user has been deleted on "+getDate());
         }
     }
 
@@ -87,6 +92,18 @@ public class Actions {
         } else {
             delete.recoverAccount(accountName);
         }
+    }
+
+    String getDate() {
+        if (date == null) {
+            date = new Date();
+        }
+        if (simpleDateFormat == null) {
+            simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        }
+
+        String sDate = simpleDateFormat.format(date);
+        return sDate;
     }
 
 }
