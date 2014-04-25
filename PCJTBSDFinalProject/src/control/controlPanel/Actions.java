@@ -6,6 +6,8 @@
 package control.controlPanel;
 
 import javax.swing.JRadioButton;
+import model.controlPanel.Delete;
+import model.controlPanel.Save;
 import model.controlPanel.Validation;
 import model.controlPanel.Update;
 
@@ -16,6 +18,8 @@ import model.controlPanel.Update;
 public class Actions {
 
     Update update;
+    Save save;
+    Delete delete;
     Validation validation;
 
     String loginId;
@@ -27,6 +31,11 @@ public class Actions {
         if (update == null) {
             update = new Update();
         }
+
+        if (save == null) {
+            save = new Save();
+        }
+
         if (validation == null) {
             validation = new Validation();
         }
@@ -61,6 +70,22 @@ public class Actions {
             }
         } else {
             update.changeType(roleId, loginId);
+        }
+    }
+
+    public void deleteAccount(String accountName) {
+        if (accountName.isEmpty()) {
+            response.Response.error("Select the account again");
+        } else {
+            save.deleteUser(accountName);
+        }
+    }
+
+    public void recoverAccount(String accountName) {
+        if (accountName.isEmpty()) {
+            response.Response.error("Select the account again");
+        } else {
+            delete.recoverAccount(accountName);
         }
     }
 

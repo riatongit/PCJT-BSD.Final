@@ -630,6 +630,11 @@ public class ControlPanel extends javax.swing.JInternalFrame {
         jLayeredPane3.add(desktopPane_profPicDeleteAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
 
         btn_deleteAccount.setText("Delete the account");
+        btn_deleteAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteAccountActionPerformed(evt);
+            }
+        });
         jLayeredPane3.add(btn_deleteAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 150, 30));
 
         jTabbedPane1.addTab("Delete Account", jLayeredPane3);
@@ -799,6 +804,10 @@ public class ControlPanel extends javax.swing.JInternalFrame {
             
         }
     }//GEN-LAST:event_btn_newCreateAccountActionPerformed
+
+    private void btn_deleteAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteAccountActionPerformed
+        actions.deleteAccount(label_accountNameDeleteAccount.getText());
+    }//GEN-LAST:event_btn_deleteAccountActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;

@@ -13,31 +13,27 @@ import response.Response;
  *
  * @author Naveen Dinuka
  */
-public class Save {
+public class Delete {
 
     connection.Connection connection;
 
-    public Save() {
+    public Delete() {
         if (connection == null) {
             connection = new Connection();
         }
     }
 
-    public void newUser() {
-
-    }
-
-    public void deleteUser(String accountName) {
-        try {
+    public void recoverAccount(String accountName){
+           try {
             ResultSet resultSet = connection.getData("SELECT * FROM login WHERE username='" + accountName + "'");
             if (resultSet.next()) {
                 int id = Integer.parseInt(resultSet.getString("general_user_profile_idgeneral_user_profile"));
-                connection.putData("INSERT INTO deleted_accounts VALUES('" + id + "')");
-                Response.success("Account deleted successfully! :-)");
+                connection.putData("DELETE FROM deleted_accounts WHERE general_user_profile_idgeneral_user_profile='"+id+"'");
+                Response.success("Account recovered successfully! :-)");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
 }
