@@ -128,6 +128,7 @@ public class test extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.println(RadioID.getRadioId(jRadioButton1,jRadioButton2,jRadioButton3,jRadioButton4,jRadioButton5,jRadioButton6));
+        System.out.println("hello");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
