@@ -7,9 +7,12 @@ package control.controlPanel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.swing.JRadioButton;
 import model.controlPanel.Delete;
 import model.controlPanel.Save;
+import model.controlPanel.Search;
 import model.controlPanel.Validation;
 import model.controlPanel.Update;
 
@@ -22,9 +25,11 @@ public class Actions {
     Update update;
     Save save;
     Delete delete;
+    Search search;
     Validation validation;
     Date date;
     SimpleDateFormat simpleDateFormat;
+    Map map;
 
     String loginId;
 
@@ -40,9 +45,19 @@ public class Actions {
             save = new Save();
         }
 
+        if (search == null) {
+            search = new Search();
+        }
+
         if (validation == null) {
             validation = new Validation();
         }
+
+        if (map == null) {
+            map = new LinkedHashMap();
+        }
+
+        map = search.getUser(Integer.parseInt(this.loginId));
     }
 
     public void actionPassword(String currentPass, String newPass, String confirmPass) {
@@ -82,7 +97,7 @@ public class Actions {
             response.Response.error("Select the account again");
         } else {
             save.deleteUser(accountName);
-            save.workerHistory(accountName, "This user has been deleted on "+getDate());
+            save.workerHistory(accountName, "This user has been deleted on " + getDate() + " by" + map.get("fname") + " " + map.get("lname"));
         }
     }
 
@@ -91,6 +106,7 @@ public class Actions {
             response.Response.error("Select the account again");
         } else {
             delete.recoverAccount(accountName);
+            save.workerHistory(accountName, "This user account has been recovered on " + getDate() + " by" + map.get("fname") + " " + map.get("lname"));
         }
     }
 
@@ -99,7 +115,7 @@ public class Actions {
             date = new Date();
         }
         if (simpleDateFormat == null) {
-            simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mma");
         }
 
         String sDate = simpleDateFormat.format(date);
