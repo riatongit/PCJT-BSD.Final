@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view.invoice;
 
 /**
@@ -17,6 +16,8 @@ public class Invoice extends javax.swing.JInternalFrame {
      */
     public Invoice() {
         initComponents();
+        lab_treater.setVisible(false);
+        Radio_normalBill.setSelected(true);
     }
 
     /**
@@ -28,6 +29,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         txt_waiterID = new javax.swing.JTextField();
         txt_qty = new javax.swing.JTextField();
@@ -35,12 +37,15 @@ public class Invoice extends javax.swing.JInternalFrame {
         Lab_proID = new javax.swing.JLabel();
         lab_qty = new javax.swing.JLabel();
         lab_witerID = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lab_treater = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        Radio_treatBill = new javax.swing.JRadioButton();
+        Radio_normalBill = new javax.swing.JRadioButton();
         lab_tot = new javax.swing.JLabel();
         lab_total = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Invoice");
@@ -50,7 +55,7 @@ public class Invoice extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, -1, -1));
         getContentPane().add(txt_waiterID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 150, -1));
         getContentPane().add(txt_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 150, -1));
         getContentPane().add(txt_proID, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, -1));
@@ -64,8 +69,8 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_witerID.setText("Waiter ID :");
         getContentPane().add(lab_witerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, 20));
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 750, 60));
+        lab_treater.setText("Treater ID :");
+        getContentPane().add(lab_treater, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, 20));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +98,24 @@ public class Invoice extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 600, 260));
 
+        buttonGroup1.add(Radio_treatBill);
+        Radio_treatBill.setText("Treat Bill");
+        Radio_treatBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Radio_treatBillActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Radio_treatBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
+
+        buttonGroup1.add(Radio_normalBill);
+        Radio_normalBill.setText("Normal Bill");
+        Radio_normalBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Radio_normalBillActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Radio_normalBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
+
         lab_tot.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lab_tot.setText("Total :");
         getContentPane().add(lab_tot, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 60, 40));
@@ -103,23 +126,40 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_total.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lab_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 150, 40));
 
-        jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 250, 60));
+        jLabel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 250, 60));
+
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 750, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Radio_treatBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_treatBillActionPerformed
+        lab_treater.setVisible(true);
+        lab_witerID.setVisible(false);
+    }//GEN-LAST:event_Radio_treatBillActionPerformed
+
+    private void Radio_normalBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_normalBillActionPerformed
+        lab_treater.setVisible(false);
+        lab_witerID.setVisible(true);
+    }//GEN-LAST:event_Radio_normalBillActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Lab_proID;
+    private javax.swing.JRadioButton Radio_normalBill;
+    private javax.swing.JRadioButton Radio_treatBill;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lab_qty;
     private javax.swing.JLabel lab_tot;
     private javax.swing.JLabel lab_total;
+    private javax.swing.JLabel lab_treater;
     private javax.swing.JLabel lab_witerID;
     private javax.swing.JTextField txt_proID;
     private javax.swing.JTextField txt_qty;
