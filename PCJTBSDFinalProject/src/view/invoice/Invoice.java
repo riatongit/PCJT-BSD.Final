@@ -11,13 +11,22 @@ package view.invoice;
  */
 public class Invoice extends javax.swing.JInternalFrame {
 
+    private static Invoice VInvoice;
+
     /**
      * Creates new form Invoice
      */
-    public Invoice() {
+    private Invoice() {
         initComponents();
         lab_treater.setVisible(false);
         Radio_normalBill.setSelected(true);
+    }
+    
+    public static Invoice getInstance(){
+        if(VInvoice==null){
+            VInvoice=new Invoice();
+        }
+        return VInvoice;
     }
 
     /**
@@ -144,8 +153,6 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_treater.setVisible(false);
         lab_witerID.setVisible(true);
     }//GEN-LAST:event_Radio_normalBillActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Lab_proID;
     private javax.swing.JRadioButton Radio_normalBill;
