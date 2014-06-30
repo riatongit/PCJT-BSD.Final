@@ -18,13 +18,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Invoice extends javax.swing.JInternalFrame {
 
+    private static Invoice VInvoice;
+
     /**
      * Creates new form Invoice
      */
-    public Invoice() {
+    private Invoice() {
         initComponents();
         lab_treater.setVisible(false);
         Radio_normalBill.setSelected(true);
+    }
+    
+    public static Invoice getInstance(){
+        if(VInvoice==null){
+            VInvoice=new Invoice();
+        }
+        return VInvoice;
     }
 
     /**
@@ -159,6 +168,7 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_treater.setVisible(false);
         lab_witerID.setVisible(true);
     }//GEN-LAST:event_Radio_normalBillActionPerformed
+<<<<<<< HEAD
 
     private void BTN_Table_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Table_addActionPerformed
         DefaultTableModel dt = new DefaultTableModel();
@@ -181,6 +191,8 @@ public class Invoice extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BTN_Table_addActionPerformed
 
 
+=======
+>>>>>>> 0d2e4b68541702dae1913beaf14aba2ba3eeb19e
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Table_add;
     private javax.swing.JLabel Lab_proID;
