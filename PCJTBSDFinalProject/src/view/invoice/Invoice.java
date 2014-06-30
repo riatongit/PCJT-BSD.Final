@@ -5,6 +5,13 @@
  */
 package view.invoice;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akash
@@ -30,7 +37,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jButton1 = new javax.swing.JButton();
+        BTN_Table_add = new javax.swing.JButton();
         txt_waiterID = new javax.swing.JTextField();
         txt_qty = new javax.swing.JTextField();
         txt_proID = new javax.swing.JTextField();
@@ -46,6 +53,7 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_total = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Invoice");
@@ -54,8 +62,13 @@ public class Invoice extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, -1, -1));
+        BTN_Table_add.setText("jButton1");
+        BTN_Table_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_Table_addActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_Table_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, -1, -1));
         getContentPane().add(txt_waiterID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 150, -1));
         getContentPane().add(txt_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 150, -1));
         getContentPane().add(txt_proID, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, -1));
@@ -118,19 +131,21 @@ public class Invoice extends javax.swing.JInternalFrame {
 
         lab_tot.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lab_tot.setText("Total :");
-        getContentPane().add(lab_tot, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 60, 40));
+        getContentPane().add(lab_tot, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 60, 40));
 
         lab_total.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lab_total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_total.setText("454");
         lab_total.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lab_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 150, 40));
 
         jLabel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 250, 60));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 110, 70));
 
         jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 750, 60));
+
+        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 250, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,15 +160,36 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_witerID.setVisible(true);
     }//GEN-LAST:event_Radio_normalBillActionPerformed
 
+    private void BTN_Table_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Table_addActionPerformed
+        DefaultTableModel dt = new DefaultTableModel();
+        jTable1.getModel();
+        Vector v = new Vector();
+        try {
+            Statement s = (Statement) connection.Connection.connection();
+            ResultSet rs = s.executeQuery("SELECT * FROM product WHERE idproduct='"+txt_proID.getText()+"'");
+            while(rs.next()){
+                v.add(rs.getString(3));
+                v.add(txt_qty.getText());
+                v.add(rs.getString(6));
+                
+            }
+            dt.addRow(v);
+        } catch (Exception ex) {
+           ex.printStackTrace();
+        }
+        v.add(txt_qty.getText());
+    }//GEN-LAST:event_BTN_Table_addActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Table_add;
     private javax.swing.JLabel Lab_proID;
     private javax.swing.JRadioButton Radio_normalBill;
     private javax.swing.JRadioButton Radio_treatBill;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lab_qty;
