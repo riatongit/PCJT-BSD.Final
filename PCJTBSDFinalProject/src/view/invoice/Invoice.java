@@ -28,10 +28,10 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_treater.setVisible(false);
         Radio_normalBill.setSelected(true);
     }
-    
-    public static Invoice getInstance(){
-        if(VInvoice==null){
-            VInvoice=new Invoice();
+
+    public static Invoice getInstance() {
+        if (VInvoice == null) {
+            VInvoice = new Invoice();
         }
         return VInvoice;
     }
@@ -168,31 +168,23 @@ public class Invoice extends javax.swing.JInternalFrame {
         lab_treater.setVisible(false);
         lab_witerID.setVisible(true);
     }//GEN-LAST:event_Radio_normalBillActionPerformed
-<<<<<<< HEAD
+    /* <<<<<<< HEAD =======>>>>>>> 0d2e4b68541702dae1913beaf14aba2ba3eeb19e */
 
     private void BTN_Table_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Table_addActionPerformed
-        DefaultTableModel dt = new DefaultTableModel();
-        jTable1.getModel();
-        Vector v = new Vector();
+
         try {
-            Statement s = (Statement) connection.Connection.connection();
-            ResultSet rs = s.executeQuery("SELECT * FROM product WHERE idproduct='"+txt_proID.getText()+"'");
-            while(rs.next()){
-                v.add(rs.getString(3));
-                v.add(txt_qty.getText());
-                v.add(rs.getString(6));
-                
-            }
+            DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
+            Vector v = new Vector();
+            
+            v.add(txt_proID.getText());
+            v.add(txt_qty.getText());
             dt.addRow(v);
         } catch (Exception ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         }
-        v.add(txt_qty.getText());
     }//GEN-LAST:event_BTN_Table_addActionPerformed
 
 
-=======
->>>>>>> 0d2e4b68541702dae1913beaf14aba2ba3eeb19e
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Table_add;
     private javax.swing.JLabel Lab_proID;
