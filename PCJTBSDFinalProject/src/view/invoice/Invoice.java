@@ -11,6 +11,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import model.invoice.AddToTable;
 
 /**
  *
@@ -171,17 +172,9 @@ public class Invoice extends javax.swing.JInternalFrame {
     /* <<<<<<< HEAD =======>>>>>>> 0d2e4b68541702dae1913beaf14aba2ba3eeb19e */
 
     private void BTN_Table_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Table_addActionPerformed
-
-        try {
-            DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
-            Vector v = new Vector();
-            
-            v.add(txt_proID.getText());
-            v.add(txt_qty.getText());
-            dt.addRow(v);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+          
+        AddToTable.getInstance().setToTable(jTable1,txt_proID,txt_qty);
+        
     }//GEN-LAST:event_BTN_Table_addActionPerformed
 
 
