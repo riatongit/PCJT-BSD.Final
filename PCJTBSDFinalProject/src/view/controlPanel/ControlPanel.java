@@ -22,12 +22,8 @@ public class ControlPanel extends javax.swing.JInternalFrame {
     /**
      * Creates new form ControlPanel
      */
-    
     //** Class variables
-    BackKey backKey;
-    PanelVisibility panelVisibility;
     Actions actions;
-    BrowseImage browseImage;
 
     public ControlPanel() {
         initComponents();
@@ -756,7 +752,7 @@ public class ControlPanel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_userAccountActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        backKey.goBack(panel_backPanel);
+        BackKey.getInstance().goBack(panel_backPanel);
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_changePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changePasswordActionPerformed
@@ -764,7 +760,7 @@ public class ControlPanel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_changePasswordActionPerformed
 
     private void label_browseForMorePicturesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_browseForMorePicturesMouseClicked
-        path = browseImage.browse(label_DPchangeAccountPicture);
+        path = BrowseImage.getInstance().browse(label_DPchangeAccountPicture);
     }//GEN-LAST:event_label_browseForMorePicturesMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -780,35 +776,33 @@ public class ControlPanel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        backKey.goBack(panel_backPanel);
+        BackKey.getInstance().goBack(panel_backPanel);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        backKey.goBack(panel_backPanel);
+        BackKey.getInstance().goBack(panel_backPanel);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        backKey.goBack(panel_backPanel);
+        BackKey.getInstance().goBack(panel_backPanel);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btn_cancelChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelChangePasswordActionPerformed
-        backKey.goBack(panel_backPanel);
+        BackKey.getInstance().goBack(panel_backPanel);
     }//GEN-LAST:event_btn_cancelChangePasswordActionPerformed
 
     private void btn_cancelManageOtherAccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelManageOtherAccountsActionPerformed
-        backKey.goBack(panel_backPanel);
+        BackKey.getInstance().goBack(panel_backPanel);
     }//GEN-LAST:event_btn_cancelManageOtherAccountsActionPerformed
 
     private void btn_newCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_newCreateAccountActionPerformed
-        if(label_newWarning.getText().isEmpty()){
-            
+        if (label_newWarning.getText().isEmpty()) {
         }
     }//GEN-LAST:event_btn_newCreateAccountActionPerformed
 
     private void btn_deleteAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteAccountActionPerformed
         actions.deleteAccount(label_accountNameDeleteAccount.getText());
     }//GEN-LAST:event_btn_deleteAccountActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_back;
@@ -922,31 +916,14 @@ public class ControlPanel extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton txt_newSupervisor;
     private javax.swing.JTextField txt_updateAccountName;
     // End of variables declaration//GEN-END:variables
-
     String loginId;
     String path;
 
     private void onGoingMethods() {
-        panelVisibility.visibilityFalse(desktopPane_userAccount, panel_backPanel);
-    }
-
-    private void initMethod() {
-        if (panelVisibility == null) {
-            panelVisibility = new PanelVisibility();
-        }
-        if (backKey == null) {
-            backKey = new BackKey();
-        }
-        if (actions == null) {
-            actions = new Actions(loginId);
-        }
-        if (browseImage == null) {
-            browseImage = new BrowseImage();
-        }
+        PanelVisibility.getInstance().visibilityFalse(desktopPane_userAccount, panel_backPanel);
     }
 
     private void navigate(JDesktopPane currDesktopPane, JComponent... components) {
-        panelVisibility.visibilityTrue(currDesktopPane, components);
+        PanelVisibility.getInstance().visibilityTrue(currDesktopPane, components);
     }
-
 }

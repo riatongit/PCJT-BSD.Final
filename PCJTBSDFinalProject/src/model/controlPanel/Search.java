@@ -83,7 +83,6 @@ public class Search {
     public String getCity(int cityId) {
 
         String city = null;
-
         try {
             ResultSet resultSet = connection.getData("SELECT * FROM city WHERE idcity='" + cityId + "'");
             if (resultSet.next()) {

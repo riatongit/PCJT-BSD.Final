@@ -22,49 +22,24 @@ import model.controlPanel.Update;
  */
 public class Actions {
 
-    Update update;
-    Save save;
-    Delete delete;
-    Search search;
-    Validation validation;
     Date date;
     SimpleDateFormat simpleDateFormat;
     Map map;
-
     String loginId;
 
     public Actions(String loginId) {
-
-        this.loginId = loginId;
-
-        if (update == null) {
-            update = new Update();
-        }
-
-        if (save == null) {
-            save = new Save();
-        }
-
-        if (search == null) {
-            search = new Search();
-        }
-
-        if (validation == null) {
-            validation = new Validation();
-        }
-
         if (map == null) {
             map = new LinkedHashMap();
         }
 
-        map = search.getUser(Integer.parseInt(this.loginId));
+        map = Search.getInstance().getUser(Integer.parseInt(this.loginId));
     }
 
     public void actionPassword(String currentPass, String newPass, String confirmPass) {
 
-        if (validation.checkCurrPassword(currentPass, loginId)) {
-            if (validation.checkNewPass(newPass, confirmPass)) {
-                update.changePassword(newPass, loginId);
+        if (Validation.getInstance().checkCurrPassword(currentPass, loginId)) {
+            if (Validation.getInstance().checkNewPass(newPass, confirmPass)) {
+                Update.getInstance().changePassword(newPass, loginId);
             } else {
                 response.Response.error("Sorry 'New Password and Confirm Password' you entered did not match! :-(");
             }
@@ -75,11 +50,11 @@ public class Actions {
     }
 
     public void actionPicture(String path) {
-        update.changePicture(path, loginId);
+        Update.getInstance().changePicture(path, loginId);
     }
 
     public void actionUserName(String newUserName) {
-        update.changeUserName(newUserName, loginId);
+        Update.getInstance().changeUserName(newUserName, loginId);
     }
 
     public void actionAccType(int roleId, JRadioButton... jradionButtons) {
@@ -88,7 +63,7 @@ public class Actions {
                 jRadioButton.setEnabled(false);
             }
         } else {
-            update.changeType(roleId, loginId);
+            Update.getInstance().changeType(roleId, loginId);
         }
     }
 
@@ -96,8 +71,8 @@ public class Actions {
         if (accountName.isEmpty()) {
             response.Response.error("Select the account again");
         } else {
-            save.deleteUser(accountName);
-            save.workerHistory(accountName, "This user has been deleted on " + getDate() + " by" + map.get("fname") + " " + map.get("lname"));
+            Save.getInstance().deleteUser(accountName);
+            Save.getInstance().workerHistory(accountName, "This user has been deleted on " + getDate() + " by" + map.get("fname") + " " + map.get("lname"));
         }
     }
 
@@ -105,8 +80,8 @@ public class Actions {
         if (accountName.isEmpty()) {
             response.Response.error("Select the account again");
         } else {
-            delete.recoverAccount(accountName);
-            save.workerHistory(accountName, "This user account has been recovered on " + getDate() + " by" + map.get("fname") + " " + map.get("lname"));
+            Delete.getInstance().recoverAccount(accountName);
+            Save.getInstance().workerHistory(accountName, "This user account has been recovered on " + getDate() + " by" + map.get("fname") + " " + map.get("lname"));
         }
     }
 
@@ -121,5 +96,4 @@ public class Actions {
         String sDate = simpleDateFormat.format(date);
         return sDate;
     }
-
 }

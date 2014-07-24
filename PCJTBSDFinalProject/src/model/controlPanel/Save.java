@@ -21,7 +21,7 @@ public class Save {
     private Save() {
     }
 
-    public Save getInstance() {
+    public static Save getInstance() {
         if (save == null) {
             save = new Save();
         }

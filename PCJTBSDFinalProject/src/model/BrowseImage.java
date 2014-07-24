@@ -21,8 +21,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class BrowseImage {
 
     private static BrowseImage browseImage;
-    JFileChooser jf;
-    FileNameExtensionFilter fileNameExtensionFilter;
+    private JFileChooser jf;
+    private FileNameExtensionFilter fileNameExtensionFilter;
 
     private BrowseImage() {
         if (jf == null) {

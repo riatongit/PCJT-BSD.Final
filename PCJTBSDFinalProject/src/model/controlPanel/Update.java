@@ -15,12 +15,17 @@ import response.Response;
  */
 public class Update {
 
-    connection.Connection connection;
+    private static Update update;
+    connection.Connection connection = Connection.getInstance();
 
-    public Update() {
-        if (connection == null) {
-            connection = new Connection();
+    private Update() {
+    }
+
+    public static Update getInstance() {
+        if (update == null) {
+            update = new Update();
         }
+        return update;
     }
 
     public void changePassword(String getNewPassword, String getid) {

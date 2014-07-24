@@ -14,14 +14,18 @@ import java.sql.ResultSet;
  */
 public class Validation {
 
-    connection.Connection connection;
-
+    private static Validation validation;
+    connection.Connection connection = Connection.getInstance();
     String currentPass;
 
-    public Validation() {
-        if (connection == null) {
-            connection = new Connection();
+    private Validation() {
+    }
+
+    public static Validation getInstance() {
+        if (validation == null) {
+            validation = new Validation();
         }
+        return validation;
     }
 
     public boolean checkCurrPassword(String currPassword, String getId) {
@@ -35,7 +39,7 @@ public class Validation {
                 if (currentPass.equals(currPassword)) {
                     b = true;
                 }
-            }else{
+            } else {
                 response.Response.error("Something isn't right here! :-P");
             }
             return b;
