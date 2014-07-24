@@ -16,16 +16,21 @@ import java.util.Map;
  */
 public class Search {
 
-    connection.Connection connection;
+    private static Search search;
+    connection.Connection connection = Connection.getInstance();
     Map map;
 
-    public Search() {
-        if (connection == null) {
-            connection = new Connection();
-        }
+    private Search() {
         if (map == null) {
             map = new LinkedHashMap();
         }
+    }
+
+    public static Search getInstance() {
+        if (search == null) {
+            search = new Search();
+        }
+        return search;
     }
 
     public Map getUser(int id) {
@@ -91,5 +96,4 @@ public class Search {
         return city;
 
     }
-
 }

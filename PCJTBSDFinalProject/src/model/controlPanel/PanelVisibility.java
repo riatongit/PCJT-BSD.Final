@@ -14,7 +14,18 @@ import javax.swing.JDesktopPane;
  */
 public class PanelVisibility {
 
+    private static PanelVisibility panelVisibility;
     static JDesktopPane currenDesktopPane;
+
+    private PanelVisibility() {
+    }
+
+    public static PanelVisibility getInstance() {
+        if (panelVisibility == null) {
+            panelVisibility = new PanelVisibility();
+        }
+        return panelVisibility;
+    }
 
     public final void visibilityFalse(JComponent... components) {
         for (JComponent component : components) {
@@ -28,5 +39,4 @@ public class PanelVisibility {
         }
         PanelVisibility.currenDesktopPane = currentDesktopPane;
     }
-
 }

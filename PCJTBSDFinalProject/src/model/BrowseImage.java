@@ -20,16 +20,24 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class BrowseImage {
 
+    private static BrowseImage browseImage;
     JFileChooser jf;
     FileNameExtensionFilter fileNameExtensionFilter;
 
-    public BrowseImage() {
+    private BrowseImage() {
         if (jf == null) {
             jf = new JFileChooser();
         }
         if (fileNameExtensionFilter == null) {
-            fileNameExtensionFilter = new FileNameExtensionFilter("JPG and PNG", "jpg", "png","JPG","PNG");
+            fileNameExtensionFilter = new FileNameExtensionFilter("JPG and PNG", "jpg", "png", "JPG", "PNG");
         }
+    }
+
+    public static BrowseImage getInstance() {
+        if (browseImage == null) {
+            browseImage = new BrowseImage();
+        }
+        return browseImage;
     }
 
     public String browse(JLabel picComponent) {
@@ -39,7 +47,7 @@ public class BrowseImage {
         if (!(jf.getSelectedFile() == null)) {
             File f = jf.getSelectedFile();
             String path = f.getAbsolutePath().replace("\\", "/");
-            if (path.endsWith(".jpg") || path.endsWith(".png")||path.endsWith(".JPG")||path.endsWith(".PNG")) {
+            if (path.endsWith(".jpg") || path.endsWith(".png") || path.endsWith(".JPG") || path.endsWith(".PNG")) {
                 picturePath = path;
                 setPicture(picturePath, picComponent);
             } else {

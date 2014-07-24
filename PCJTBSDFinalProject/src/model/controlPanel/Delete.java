@@ -15,25 +15,29 @@ import response.Response;
  */
 public class Delete {
 
-    connection.Connection connection;
+    private static Delete delete;
+    connection.Connection connection = Connection.getInstance();
 
-    public Delete() {
-        if (connection == null) {
-            connection = new Connection();
-        }
+    private Delete() {
     }
 
-    public void recoverAccount(String accountName){
-           try {
+    public static Delete getInstance() {
+        if (delete == null) {
+            delete = new Delete();
+        }
+        return delete;
+    }
+
+    public void recoverAccount(String accountName) {
+        try {
             ResultSet resultSet = connection.getData("SELECT * FROM login WHERE username='" + accountName + "'");
             if (resultSet.next()) {
                 int id = Integer.parseInt(resultSet.getString("general_user_profile_idgeneral_user_profile"));
-                connection.putData("DELETE FROM deleted_accounts WHERE general_user_profile_idgeneral_user_profile='"+id+"'");
+                connection.putData("DELETE FROM deleted_accounts WHERE general_user_profile_idgeneral_user_profile='" + id + "'");
                 Response.success("Account recovered successfully! :-)");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
 }

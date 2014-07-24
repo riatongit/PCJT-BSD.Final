@@ -15,16 +15,20 @@ import response.Response;
  */
 public class Save {
 
-    connection.Connection connection;
+    private static Save save;
+    connection.Connection connection = Connection.getInstance();
 
-    public Save() {
-        if (connection == null) {
-            connection = new Connection();
+    private Save() {
+    }
+
+    public Save getInstance() {
+        if (save == null) {
+            save = new Save();
         }
+        return save;
     }
 
     public void newUser() {
-
     }
 
     public void deleteUser(String accountName) {
@@ -51,5 +55,4 @@ public class Save {
             e.printStackTrace();
         }
     }
-
 }

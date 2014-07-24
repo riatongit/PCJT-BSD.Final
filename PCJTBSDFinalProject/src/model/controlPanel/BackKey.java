@@ -13,6 +13,18 @@ import javax.swing.JPanel;
  */
 public class BackKey {
 
+    private static BackKey backKey;
+
+    private BackKey() {
+    }
+
+    public static BackKey getInstance() {
+        if (backKey == null) {
+            backKey = new BackKey();
+        }
+        return backKey;
+    }
+
     public void goBack(JPanel panel) {
         PanelVisibility.currenDesktopPane.setVisible(false);
         panel.setVisible(false);
