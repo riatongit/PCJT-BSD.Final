@@ -5,9 +5,13 @@
  */
 package control.login;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
+import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import sun.security.util.Password;
+import model.controlPanel.Validation;
+import view.home.Home;
 
 /**
  *
@@ -29,10 +33,28 @@ public class Login {
         return login;
     }
 
-    public void checkLogin(JTextField username, JPasswordField password) {
+    public void checkLogin(JTextField username, JPasswordField password, JFrame loginFrame) {
         this.username = username.getText();
         this.password = new String(password.getPassword());
-        System.out.println(this.password);
+
+        if (Validation.getInstance().validateUnPw(username, password)) {
+            try {
+                ResultSet resultSet = model.Login.Login.getInstance().loginSys(this.username, this.password);
+                System.out.println(resultSet.wasNull());
+                if (resultSet.next()) {
+                    loginFrame.dispose();
+                    new Home().setVisible(true);
+                } else {
+                    response.Response.error("Username and Password you entered is incorrect :(");
+                }
+            } catch (MySQLSyntaxErrorException e) {
+                response.Response.error("Check your database and try again");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            response.Response.error("Enter username and Password to Continue :P");
+        }
     }
 
 }

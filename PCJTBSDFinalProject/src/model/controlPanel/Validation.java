@@ -7,6 +7,8 @@ package model.controlPanel;
 
 import connection.Connection;
 import java.sql.ResultSet;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -51,5 +53,13 @@ public class Validation {
 
     public boolean checkNewPass(String newPass, String confirmPass) {
         return newPass.equals(confirmPass);
+    }
+
+    public boolean validateUnPw(JTextField username, JPasswordField password) {
+        if (username.getText().isEmpty() && new String(password.getPassword()).isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

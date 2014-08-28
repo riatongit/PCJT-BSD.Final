@@ -29,7 +29,7 @@ public class Connection {
 
     public java.sql.Connection connection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
-        java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/neelagiri", "root", "123");
+        java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/neelagiri", "root", "123");
         return conn;
     }
 

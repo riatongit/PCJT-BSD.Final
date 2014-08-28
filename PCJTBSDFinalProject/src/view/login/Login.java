@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view.login;
 
 import view.home.Home;
@@ -13,6 +12,8 @@ import view.home.Home;
  * @author Naveen
  */
 public class Login extends javax.swing.JFrame {
+
+    private static Login login;
 
     /**
      * Creates new form Login
@@ -94,9 +95,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_button_cancelActionPerformed
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
-        new Home().setVisible(true);
-        control.login.Login.getInstance().checkLogin(txt_username, txt_password);
-        this.dispose();
+        control.login.Login.getInstance().checkLogin(txt_username, txt_password, login);
     }//GEN-LAST:event_button_loginActionPerformed
 
     /**
@@ -128,8 +127,10 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
-                new Login().setVisible(true);
+                login = new Login();
+                login.setVisible(true);
             }
         });
     }
