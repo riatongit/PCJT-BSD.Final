@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.invoice;
+package control.invoice;
 
 import java.util.Vector;
 import javax.swing.JTable;
@@ -14,18 +14,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author AKASH
  */
-public class AddToTable {
+public class Add {
 
-    private static AddToTable addToTable;
+    private static Add add;
 
-    private AddToTable() {
+    private Add() {
     }
 
-    public static AddToTable getInstance() {
-        if (addToTable == null) {
-            addToTable = new AddToTable();
+    public static Add getInstance() {
+        if (add == null) {
+            add = new Add();
         }
-        return addToTable;
+        return add;
     }
 
     public void setToTable(JTable table, JTextField txt_proID, JTextField txt_qty) {

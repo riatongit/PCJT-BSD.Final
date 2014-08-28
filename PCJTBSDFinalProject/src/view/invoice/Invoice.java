@@ -5,13 +5,13 @@
  */
 package view.invoice;
 
+import control.invoice.Add;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import model.invoice.AddToTable;
 
 /**
  *
@@ -173,7 +173,7 @@ public class Invoice extends javax.swing.JInternalFrame {
 
     private void BTN_Table_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Table_addActionPerformed
           
-        AddToTable.getInstance().setToTable(jTable1,txt_proID,txt_qty);
+        Add.getInstance().setToTable(jTable1,txt_proID,txt_qty);
         
     }//GEN-LAST:event_BTN_Table_addActionPerformed
 
