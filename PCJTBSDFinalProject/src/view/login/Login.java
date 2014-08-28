@@ -37,6 +37,7 @@ public class Login extends javax.swing.JFrame {
         txt_password = new javax.swing.JPasswordField();
         button_login = new javax.swing.JButton();
         button_cancel = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,12 @@ public class Login extends javax.swing.JFrame {
         });
         jDesktopPane1.add(button_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, 30));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("Sign up");
+        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 230, 70, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,6 +95,7 @@ public class Login extends javax.swing.JFrame {
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
         new Home().setVisible(true);
+        control.login.Login.getInstance().checkLogin(txt_username, txt_password);
         this.dispose();
     }//GEN-LAST:event_button_loginActionPerformed
 
@@ -130,6 +138,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton button_cancel;
     private javax.swing.JButton button_login;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label_password;
     private javax.swing.JLabel label_username;
     private javax.swing.JPasswordField txt_password;
