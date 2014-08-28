@@ -27,7 +27,7 @@ public class Connection {
         return connection;
     }
 
-    public java.sql.Connection connection() throws Exception {
+    private java.sql.Connection connection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
         java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/neelagiri", "root", "123");
         return conn;
