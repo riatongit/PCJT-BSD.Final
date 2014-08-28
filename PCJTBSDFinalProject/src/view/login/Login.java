@@ -95,7 +95,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_button_cancelActionPerformed
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
-        control.login.Login.getInstance().checkLogin(txt_username, txt_password, login);
+//        control.login.Login.getInstance().checkLogin(txt_username, txt_password, login);
+        
+        this.dispose();
+        new Home().setVisible(true);
     }//GEN-LAST:event_button_loginActionPerformed
 
     /**
