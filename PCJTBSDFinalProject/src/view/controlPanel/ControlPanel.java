@@ -27,8 +27,7 @@ public class ControlPanel extends javax.swing.JInternalFrame {
 
     public ControlPanel() {
         initComponents();
-//        initMethod();
-//        onGoingMethods();
+        onGoingMethods();
     }
 
     /**

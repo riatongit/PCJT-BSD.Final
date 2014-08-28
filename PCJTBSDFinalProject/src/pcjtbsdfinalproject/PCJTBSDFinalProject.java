@@ -6,6 +6,7 @@
 
 package pcjtbsdfinalproject;
 
+import view.login.Login;
 import view.main.main;
 
 /**
@@ -41,7 +42,7 @@ public class PCJTBSDFinalProject {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
