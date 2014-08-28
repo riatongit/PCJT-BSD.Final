@@ -13,6 +13,8 @@ import java.sql.ResultSet;
  */
 public class Search {
 
+    String resultQty;
+    double qty;
     private static Search search;
 
     private Search() {
@@ -26,12 +28,20 @@ public class Search {
 
     }
 
-    public void searchInvoiceTable(String txt_prodID) {
+    public double searchInvoiceTable(String txt_prodID) {
+        
+        
         try {
             ResultSet rs =  connection.Connection.getInstance().getData("SELECT * FROM product WHERE idproduct'"+txt_prodID+"'");
+            
+            while(rs.next()){
+               resultQty = rs.getString("unit_price");
+            }
+            qty = Double.parseDouble(resultQty);
         } catch (Exception e) {
             
         }
+        return qty;
         
     }
 }
