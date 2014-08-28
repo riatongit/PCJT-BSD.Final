@@ -32,19 +32,22 @@ public class Signup extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         label_alert = new javax.swing.JLabel();
         label_heading = new javax.swing.JLabel();
-        label_newAccName = new javax.swing.JLabel();
-        txt_newAccountName = new javax.swing.JTextField();
-        label_newNic = new javax.swing.JLabel();
-        txt_newNic = new javax.swing.JTextField();
-        label_newFirstName = new javax.swing.JLabel();
-        txt_newFirstName = new javax.swing.JTextField();
-        label_newLastName = new javax.swing.JLabel();
-        txt_newLastName = new javax.swing.JTextField();
-        label_newCity = new javax.swing.JLabel();
-        txt_newCity = new javax.swing.JComboBox();
-        btn_newCreateAccount = new javax.swing.JButton();
-        label_bg = new javax.swing.JLabel();
+        label_accName = new javax.swing.JLabel();
+        txt_accountName = new javax.swing.JTextField();
+        label_nic = new javax.swing.JLabel();
+        txt_nic = new javax.swing.JTextField();
+        label_firstName = new javax.swing.JLabel();
+        txt_firstName = new javax.swing.JTextField();
+        label_lastName = new javax.swing.JLabel();
+        txt_lastName = new javax.swing.JTextField();
+        label_city = new javax.swing.JLabel();
+        txt_city = new javax.swing.JComboBox();
+        btn_createAccount = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        label_role = new javax.swing.JLabel();
+        combo_role = new javax.swing.JComboBox();
+        button_cancel = new javax.swing.JButton();
+        label_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,52 +55,64 @@ public class Signup extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("You can customise other settings later");
-        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 254, 620, 20));
+        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 620, 20));
 
         label_alert.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label_alert.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_alert.setText("By default you are the administrator");
-        jLayeredPane1.add(label_alert, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 620, 30));
+        jLayeredPane1.add(label_alert, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 620, 30));
 
         label_heading.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         label_heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_heading.setText("Signup to Neelagiri");
         jLayeredPane1.add(label_heading, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 40));
 
-        label_newAccName.setText("Account Name");
-        jLayeredPane1.add(label_newAccName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 90, 30));
-        jLayeredPane1.add(txt_newAccountName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 170, 30));
+        label_accName.setText("Account Name");
+        jLayeredPane1.add(label_accName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 90, 30));
+        jLayeredPane1.add(txt_accountName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 170, 30));
 
-        label_newNic.setText("NIC ");
-        jLayeredPane1.add(label_newNic, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 40, 30));
-        jLayeredPane1.add(txt_newNic, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 170, 30));
+        label_nic.setText("NIC ");
+        jLayeredPane1.add(label_nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 40, 30));
+        jLayeredPane1.add(txt_nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 170, 30));
 
-        label_newFirstName.setText("First Name");
-        jLayeredPane1.add(label_newFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 90, 30));
-        jLayeredPane1.add(txt_newFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 170, 30));
+        label_firstName.setText("First Name");
+        jLayeredPane1.add(label_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 90, 30));
+        jLayeredPane1.add(txt_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 170, 30));
 
-        label_newLastName.setText("Last Name");
-        jLayeredPane1.add(label_newLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 80, 30));
-        jLayeredPane1.add(txt_newLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 170, 30));
+        label_lastName.setText("Last Name");
+        jLayeredPane1.add(label_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 80, 30));
+        jLayeredPane1.add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 170, 30));
 
-        label_newCity.setText("City");
-        jLayeredPane1.add(label_newCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 90, 30));
+        label_city.setText("City");
+        jLayeredPane1.add(label_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 90, 30));
 
-        txt_newCity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jLayeredPane1.add(txt_newCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 160, 30));
+        txt_city.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLayeredPane1.add(txt_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 160, 30));
 
-        btn_newCreateAccount.setBackground(new java.awt.Color(0, 0, 204));
-        btn_newCreateAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_newCreateAccount.setForeground(new java.awt.Color(255, 255, 255));
-        btn_newCreateAccount.setText("Create Account");
-        btn_newCreateAccount.addActionListener(new java.awt.event.ActionListener() {
+        btn_createAccount.setBackground(new java.awt.Color(0, 0, 204));
+        btn_createAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_createAccount.setForeground(new java.awt.Color(255, 255, 255));
+        btn_createAccount.setText("Create Account");
+        btn_createAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_newCreateAccountActionPerformed(evt);
+                btn_createAccountActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(btn_newCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 250, 30));
-        jLayeredPane1.add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 280));
-        jLayeredPane1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 620, 20));
+        jLayeredPane1.add(btn_createAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 310, 30));
+        jLayeredPane1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 620, 20));
+
+        label_role.setText("Role");
+        jLayeredPane1.add(label_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 90, 30));
+
+        combo_role.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLayeredPane1.add(combo_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 160, 30));
+
+        button_cancel.setBackground(new java.awt.Color(153, 0, 0));
+        button_cancel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        button_cancel.setForeground(new java.awt.Color(255, 255, 255));
+        button_cancel.setText("Cancel");
+        jLayeredPane1.add(button_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 210, 30));
+        jLayeredPane1.add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,15 +122,15 @@ public class Signup extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_newCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_newCreateAccountActionPerformed
+    private void btn_createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createAccountActionPerformed
       
-    }//GEN-LAST:event_btn_newCreateAccountActionPerformed
+    }//GEN-LAST:event_btn_createAccountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,22 +168,25 @@ public class Signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_newCreateAccount;
+    private javax.swing.JButton btn_createAccount;
+    private javax.swing.JButton button_cancel;
+    private javax.swing.JComboBox combo_role;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel label_accName;
     private javax.swing.JLabel label_alert;
     private javax.swing.JLabel label_bg;
+    private javax.swing.JLabel label_city;
+    private javax.swing.JLabel label_firstName;
     private javax.swing.JLabel label_heading;
-    private javax.swing.JLabel label_newAccName;
-    private javax.swing.JLabel label_newCity;
-    private javax.swing.JLabel label_newFirstName;
-    private javax.swing.JLabel label_newLastName;
-    private javax.swing.JLabel label_newNic;
-    private javax.swing.JTextField txt_newAccountName;
-    private javax.swing.JComboBox txt_newCity;
-    private javax.swing.JTextField txt_newFirstName;
-    private javax.swing.JTextField txt_newLastName;
-    private javax.swing.JTextField txt_newNic;
+    private javax.swing.JLabel label_lastName;
+    private javax.swing.JLabel label_nic;
+    private javax.swing.JLabel label_role;
+    private javax.swing.JTextField txt_accountName;
+    private javax.swing.JComboBox txt_city;
+    private javax.swing.JTextField txt_firstName;
+    private javax.swing.JTextField txt_lastName;
+    private javax.swing.JTextField txt_nic;
     // End of variables declaration//GEN-END:variables
 }
