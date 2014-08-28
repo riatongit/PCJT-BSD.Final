@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import model.invoice.Search;
 
 /**
  *
@@ -36,7 +37,9 @@ public class Add {
 
             v.add(txt_proID.getText());
             v.add(txt_qty.getText());
+            Search.getInstance().searchInvoiceTable(txt_proID.toString());
             dt.addRow(v);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
