@@ -30,26 +30,27 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         label_password = new javax.swing.JLabel();
         label_username = new javax.swing.JLabel();
         txt_username = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
         button_login = new javax.swing.JButton();
         button_cancel = new javax.swing.JButton();
-        label_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         label_password.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         label_password.setText("Password");
-        getContentPane().add(label_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 110, 30));
+        jDesktopPane1.add(label_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 110, 30));
 
         label_username.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         label_username.setText("Username");
-        getContentPane().add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 110, 30));
-        getContentPane().add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 260, 30));
-        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 260, 30));
+        jDesktopPane1.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 110, 30));
+        jDesktopPane1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 260, 30));
+        jDesktopPane1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 260, 30));
 
         button_login.setText("Login");
         button_login.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +58,7 @@ public class Login extends javax.swing.JFrame {
                 button_loginActionPerformed(evt);
             }
         });
-        getContentPane().add(button_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 70, 30));
+        jDesktopPane1.add(button_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 70, 30));
 
         button_cancel.setText("Cancel");
         button_cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -65,8 +66,18 @@ public class Login extends javax.swing.JFrame {
                 button_cancelActionPerformed(evt);
             }
         });
-        getContentPane().add(button_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, 30));
-        getContentPane().add(label_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 300));
+        jDesktopPane1.add(button_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,7 +129,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_cancel;
     private javax.swing.JButton button_login;
-    private javax.swing.JLabel label_bg;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel label_password;
     private javax.swing.JLabel label_username;
     private javax.swing.JPasswordField txt_password;
