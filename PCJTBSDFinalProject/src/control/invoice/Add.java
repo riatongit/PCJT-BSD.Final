@@ -81,13 +81,13 @@ public class Add {
     }
 
     public void setProduct(JTextField product_name, JComboBox search_box) {
+
         searchPro_name = product_name.getText();
-        if (searchPro_name.isEmpty()) {
-            search_box.hidePopup();
-            search_box.removeAllItems();
-        } else {
-            try {
+
+        try {
+            if (!searchPro_name.isEmpty()) {
                 ResultSet rs = Search.getInstance().productToTextField(searchPro_name);
+
                 v = new Vector();
                 while (rs.next()) {
                     v.add(rs.getString("product_name"));
@@ -95,11 +95,13 @@ public class Add {
 
                 search_box.setModel(new DefaultComboBoxModel(v));
                 search_box.showPopup();
-//            product_name.setText(search_box.getSelectedItem().toString());
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else if (searchPro_name.isEmpty()) {
+                search_box.hidePopup();
             }
-        }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 }
