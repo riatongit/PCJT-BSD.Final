@@ -80,23 +80,28 @@ public class Add {
         return total;
     }
 
-    public void setProduct(JTextField product_name, JComboBox search_box) {
+    public void setProduct(JTextField product_name, JComboBox product_Combo) {
 
         searchPro_name = product_name.getText();
 
         try {
             if (!searchPro_name.isEmpty()) {
+                
                 ResultSet rs = Search.getInstance().productToTextField(searchPro_name);
 
                 v = new Vector();
+                
                 while (rs.next()) {
                     v.add(rs.getString("product_name"));
+                
                 }
-
-                search_box.setModel(new DefaultComboBoxModel(v));
-                search_box.showPopup();
+                product_Combo.setMaximumRowCount(7);
+                product_Combo.setModel(new DefaultComboBoxModel(v));
+              
+                product_Combo.showPopup();
+                
             } else if (searchPro_name.isEmpty()) {
-                search_box.hidePopup();
+                product_Combo.hidePopup();
             }
 
         } catch (Exception e) {
