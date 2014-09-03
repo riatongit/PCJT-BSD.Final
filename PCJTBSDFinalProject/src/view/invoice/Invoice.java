@@ -11,7 +11,9 @@ import java.sql.Statement;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.invoice.Search;
 
 /**
  *
@@ -64,6 +66,8 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setClosable(true);
         setTitle("Invoice");
@@ -72,7 +76,7 @@ public class Invoice extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BTN_Table_add.setText("jButton1");
+        BTN_Table_add.setText("Add Items");
         BTN_Table_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_Table_addActionPerformed(evt);
@@ -81,6 +85,12 @@ public class Invoice extends javax.swing.JInternalFrame {
         getContentPane().add(BTN_Table_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, -1, -1));
         getContentPane().add(txt_waiterID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 150, -1));
         getContentPane().add(txt_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 150, -1));
+
+        txt_proID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_proIDKeyPressed(evt);
+            }
+        });
         getContentPane().add(txt_proID, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, -1));
 
         Lab_proID.setText("Procut ID :");
@@ -157,6 +167,16 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 250, 70));
 
+        jButton1.setText("Print");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 80, -1));
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,10 +192,22 @@ public class Invoice extends javax.swing.JInternalFrame {
     /* <<<<<<< HEAD =======>>>>>>> 0d2e4b68541702dae1913beaf14aba2ba3eeb19e */
 
     private void BTN_Table_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Table_addActionPerformed
-          
-        Add.getInstance().setToTable(jTable1,txt_proID,txt_qty);
-        
+        if (!(txt_proID.getText().isEmpty() || txt_qty.getText().isEmpty() || txt_waiterID.getText().isEmpty())) {
+            Add.getInstance().setToTable(jTable1, txt_proID, txt_qty, lab_total);
+        } else {
+            response.Response.error("Please Insert Data");
+        }
+
     }//GEN-LAST:event_BTN_Table_addActionPerformed
+
+    private void txt_proIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_proIDKeyPressed
+        Add.getInstance().setProduct(txt_proID, jComboBox1);
+       
+    }//GEN-LAST:event_txt_proIDKeyPressed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+       txt_proID.setText(jComboBox1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -184,6 +216,8 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton Radio_normalBill;
     private javax.swing.JRadioButton Radio_treatBill;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

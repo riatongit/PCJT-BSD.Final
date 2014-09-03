@@ -6,6 +6,7 @@
 package model.invoice;
 
 import java.sql.ResultSet;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,8 +14,9 @@ import java.sql.ResultSet;
  */
 public class Search {
 
-    String resultQty;
-    double qty;
+    private String resultQty;
+    private String resultPro_name;
+    String qty;
     private static Search search;
 
     private Search() {
@@ -28,20 +30,38 @@ public class Search {
 
     }
 
-    public double searchInvoiceTable(String txt_prodID) {
-        
-        
+    public String[] searchInvoiceTable(String txt_prodID) {
+
+        String returnString[] = new String[2];
+
         try {
-            ResultSet rs =  connection.Connection.getInstance().getData("SELECT * FROM product WHERE idproduct'"+txt_prodID+"'");
-            
-            while(rs.next()){
-               resultQty = rs.getString("unit_price");
+            ResultSet rs = connection.Connection.getInstance().getData("SELECT * FROM product WHERE product_name='" + txt_prodID + "'");
+
+            while (rs.next()) {
+                resultPro_name = rs.getString("product_name");
+                resultQty = rs.getString("unit_price");
             }
-            qty = Double.parseDouble(resultQty);
+
         } catch (Exception e) {
-            
+            e.printStackTrace();
         }
-        return qty;
+        returnString[0] = resultPro_name;
+        returnString[1] = resultQty;
+        return returnString;
+    }
+    
+   
+    public ResultSet productToTextField(String productName){
+         
+        try {
+            ResultSet rs = connection.Connection.getInstance().getData("SELECT * FROM product WHERE product_name LIKE '"+productName+"%'");
+            
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        
         
     }
 }
