@@ -6,6 +6,7 @@
 package control.invoice;
 
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,16 +19,19 @@ public class KeyHandling {
     private KeyHandling() {
     }
 
-    public static KeyHandling getInstance(){
-        if(keyHandling == null){
+    public static KeyHandling getInstance() {
+        if (keyHandling == null) {
             keyHandling = new KeyHandling();
         }
         return keyHandling;
-    
-        }
-    public void setFocusProductCombo(JComboBox product_Combo) {
 
-        product_Combo.requestFocus();
+    }
 
+    public void setFocusTextField(JTextField textField) {
+        textField.grabFocus();
+    }
+
+    public void setFocusComboBox(JComboBox comboBox) {
+        comboBox.requestFocus();
     }
 }

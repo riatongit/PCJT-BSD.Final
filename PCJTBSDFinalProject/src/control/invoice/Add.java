@@ -5,6 +5,7 @@
  */
 package control.invoice;
 
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -86,20 +87,20 @@ public class Add {
 
         try {
             if (!searchPro_name.isEmpty()) {
-                
+
                 ResultSet rs = Search.getInstance().productToTextField(searchPro_name);
 
                 v = new Vector();
-                
+
                 while (rs.next()) {
                     v.add(rs.getString("product_name"));
-                
+
                 }
                 product_Combo.setMaximumRowCount(7);
                 product_Combo.setModel(new DefaultComboBoxModel(v));
-              
+
                 product_Combo.showPopup();
-                
+
             } else if (searchPro_name.isEmpty()) {
                 product_Combo.hidePopup();
             }
@@ -108,5 +109,7 @@ public class Add {
             e.printStackTrace();
         }
     }
+
+   
 
 }
