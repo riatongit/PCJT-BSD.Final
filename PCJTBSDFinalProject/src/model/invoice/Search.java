@@ -49,19 +49,17 @@ public class Search {
         returnString[1] = resultQty;
         return returnString;
     }
-    
-   
-    public ResultSet productToTextField(String productName){
-         
+
+    public ResultSet productToTextField(String productName) {
+
         try {
-            ResultSet rs = connection.Connection.getInstance().getData("SELECT * FROM product WHERE product_name LIKE '"+productName+"%'");
-            
+            ResultSet rs = connection.Connection.getInstance().getData("SELECT * FROM product WHERE product_name LIKE '" + productName + "%'");
+
             return rs;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        
-        
+
     }
 }

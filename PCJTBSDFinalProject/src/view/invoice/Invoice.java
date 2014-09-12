@@ -6,6 +6,11 @@
 package view.invoice;
 
 import control.invoice.Add;
+import control.invoice.Control;
+import control.invoice.KeyHandling;
+import java.awt.Event;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Vector;
@@ -53,6 +58,7 @@ public class Invoice extends javax.swing.JInternalFrame {
         txt_waiterID = new javax.swing.JTextField();
         txt_qty = new javax.swing.JTextField();
         txt_proID = new javax.swing.JTextField();
+        product_Combo = new javax.swing.JComboBox();
         Lab_proID = new javax.swing.JLabel();
         lab_qty = new javax.swing.JLabel();
         lab_witerID = new javax.swing.JLabel();
@@ -67,7 +73,6 @@ public class Invoice extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
 
         setClosable(true);
         setTitle("Invoice");
@@ -90,14 +95,43 @@ public class Invoice extends javax.swing.JInternalFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_proIDKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_proIDKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_proIDKeyTyped(evt);
+            }
         });
-        getContentPane().add(txt_proID, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, -1));
+        getContentPane().add(txt_proID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 150, -1));
 
-        Lab_proID.setText("Procut ID :");
-        getContentPane().add(Lab_proID, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 70, 20));
+        product_Combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                product_ComboActionPerformed(evt);
+            }
+        });
+        product_Combo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                product_ComboFocusGained(evt);
+            }
+        });
+        product_Combo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                product_ComboKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                product_ComboKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                product_ComboKeyTyped(evt);
+            }
+        });
+        getContentPane().add(product_Combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 150, -1));
+
+        Lab_proID.setText("Product Name :");
+        getContentPane().add(Lab_proID, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 90, 20));
 
         lab_qty.setText("Quantity :");
-        getContentPane().add(lab_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 60, 20));
+        getContentPane().add(lab_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 60, 20));
 
         lab_witerID.setText("Waiter ID :");
         getContentPane().add(lab_witerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, 20));
@@ -170,13 +204,6 @@ public class Invoice extends javax.swing.JInternalFrame {
         jButton1.setText("Print");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 80, -1));
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,22 +219,42 @@ public class Invoice extends javax.swing.JInternalFrame {
     /* <<<<<<< HEAD =======>>>>>>> 0d2e4b68541702dae1913beaf14aba2ba3eeb19e */
 
     private void BTN_Table_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Table_addActionPerformed
-        if (!(txt_proID.getText().isEmpty() || txt_qty.getText().isEmpty() || txt_waiterID.getText().isEmpty())) {
-            Add.getInstance().setToTable(jTable1, txt_proID, txt_qty, lab_total);
-        } else {
-            response.Response.error("Please Insert Data");
-        }
-
+        Control.getInstance().searchToTable(txt_proID, txt_qty, txt_waiterID, jTable1, lab_total);
     }//GEN-LAST:event_BTN_Table_addActionPerformed
 
     private void txt_proIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_proIDKeyPressed
-        Add.getInstance().setProduct(txt_proID, jComboBox1);
-       
+
+
     }//GEN-LAST:event_txt_proIDKeyPressed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-       txt_proID.setText(jComboBox1.getSelectedItem().toString());
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void product_ComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_product_ComboActionPerformed
+        txt_proID.setText(product_Combo.getSelectedItem().toString());
+    }//GEN-LAST:event_product_ComboActionPerformed
+
+    private void txt_proIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_proIDKeyTyped
+
+    }//GEN-LAST:event_txt_proIDKeyTyped
+
+    private void txt_proIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_proIDKeyReleased
+        Control.getInstance().searchProduct(txt_proID, product_Combo, evt);
+        Control.getInstance().keyFocus(txt_proID, product_Combo, evt);
+    }//GEN-LAST:event_txt_proIDKeyReleased
+
+    private void product_ComboKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_product_ComboKeyTyped
+
+    }//GEN-LAST:event_product_ComboKeyTyped
+
+    private void product_ComboKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_product_ComboKeyReleased
+
+    }//GEN-LAST:event_product_ComboKeyReleased
+
+    private void product_ComboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_product_ComboKeyPressed
+        Control.getInstance().keyFocus(txt_proID, product_Combo, evt);
+    }//GEN-LAST:event_product_ComboKeyPressed
+
+    private void product_ComboFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_product_ComboFocusGained
+
+    }//GEN-LAST:event_product_ComboFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -217,7 +264,6 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton Radio_treatBill;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -228,6 +274,7 @@ public class Invoice extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lab_total;
     private javax.swing.JLabel lab_treater;
     private javax.swing.JLabel lab_witerID;
+    private javax.swing.JComboBox product_Combo;
     private javax.swing.JTextField txt_proID;
     private javax.swing.JTextField txt_qty;
     private javax.swing.JTextField txt_waiterID;
